@@ -41,7 +41,7 @@ $query = "SELECT * FROM tb_anggota WHERE id_anggota='$id_anggota'";
           <div class="col-12">
             <div class="card">
              <div class="card-header bg-success">
-                <h5 class="card-title"><center><img src="../gambar/<?=$foto?>" class="rounded mx-auto d-block"> <br><small> Kartu Anggota ( <b><?=ucfirst($nama)?> </b>)</small></center>  </h5>
+                <h5 class="card-title"><center><img src="../gambar/<?=$foto?>" class="rounded mx-auto d-block" width="150px" hight="70px" > <br><small> Kartu Anggota ( <b><?=ucfirst($nama)?> </b>)</small></center>  </h5>
                    
                 </div>               
                 <div class="container">

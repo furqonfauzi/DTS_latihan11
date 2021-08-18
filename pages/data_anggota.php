@@ -19,14 +19,14 @@ include '../koneksi.php';
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="../index.php">DIGITAL TALENT</a>
+  <a class="navbar-brand" href="../dasboard.php">DIGITAL TALENT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../dasboard.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,6 +45,9 @@ include '../koneksi.php';
           <a class="dropdown-item" href="#">Data Pinjaman</a>
           <a class="dropdown-item" href="#">Data Pengembalian</a>
         </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="../proses/logout.php">Logout <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>

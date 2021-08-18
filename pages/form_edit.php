@@ -45,7 +45,7 @@ $query = "SELECT * FROM tb_anggota WHERE id_anggota='$id_anggota'";
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../dasboard.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,6 +65,9 @@ $query = "SELECT * FROM tb_anggota WHERE id_anggota='$id_anggota'";
           <a class="dropdown-item" href="#">Data Pengembalian</a>
         </div>
       </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="../proses/logout.php">Logout <span class="sr-only">(current)</span></a>
+      </li>
     </ul>
   </div>
 </nav>
@@ -82,7 +85,7 @@ $query = "SELECT * FROM tb_anggota WHERE id_anggota='$id_anggota'";
           <div class="col-12">
             <div class="card">
              <div class="card-header bg-success">
-                <h5 class="card-title"><center><img src="../gambar/<?=$foto?>" class="rounded mx-auto d-block"> <br><small>Edit Profil ( <b><?=ucfirst($nama)?> </b>)</small></center>  </h5>
+                <h5 class="card-title"><center><img src="../gambar/<?=$foto?>" width="150px" hight="70px" class="rounded mx-auto d-block"> <br><small>Edit Profil ( <b><?=ucfirst($nama)?> </b>)</small></center>  </h5>
                    
                 </div>               
                 <div class="container">

@@ -17,16 +17,16 @@ include '../koneksi.php';
 			$_SESSION['session_login'] = $data_admin['nama'];
 
 			echo '<script>alert("Berhasil Login");</script>';
-			echo "<meta http-equiv='refresh' content='0; url=../index.php?username=$session_login'>";
+			echo "<meta http-equiv='refresh' content='0; url=../dasboard.php?username=$session_login'>";
 
 		}else{
 
-			echo "<meta http-equiv='refresh' content='0 url=../login.php'>";
+			echo "<meta http-equiv='refresh' content='0 url=../index.php'>";
 			echo '<script>alert("Gagal Login");</script>';
 			
 		}
 	}else{
-		include "../login.php";
+		include "../index.php";
 	}
 
  ?>

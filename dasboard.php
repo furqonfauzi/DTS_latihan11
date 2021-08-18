@@ -11,8 +11,9 @@
 
 </head>
 <?php 
-  session_start();
-  include '../koneksi.php';
+session_start();
+include 'koneksi.php';
+
  ?>
 
 
@@ -25,8 +26,9 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="../dasboard.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="dasboard.php">Home <span class="sr-only">(current)</span></a>
       </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Data Master
@@ -45,10 +47,12 @@
           <a class="dropdown-item" href="#">Data Pengembalian</a>
         </div>
       </li>
-       <li class="nav-item active">
-        <a class="nav-link" href="../proses/logout.php">Logout <span class="sr-only">(current)</span></a>
+      <li class="nav-item active">
+        <a class="nav-link" href="proses/logout.php">Logout <span class="sr-only">(current)</span></a>
       </li>
     </ul>
+
+   
   </div>
 </nav>
 
@@ -64,51 +68,60 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-             <div class="card-header bg-success">
-                <h5 class="card-title"><center>Form Tambah Angggota </center>  </h5>
-                   
-                </div>               
-                <div class="container">
-                  <div class="alert alert-none" role="alert">
-                  <form action="../proses/add_anggota.php" method="post" enctype="multipart/form-data">
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="foto">Gambar</label>
-                        <input type="file" class="form-control" id="foto" name="foto" placeholder="Masukan Gambar Anda" required>
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="id_anggota">ID Anggota </label>
-                        <input type="text" class="form-control" id="id_anggota" name="id_anggota" placeholder="Masukan Id Anggota Anda" required>
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="umur">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Anda" required>
-                      </div>
-                      <div class="form-group col-md-6">
-                         <label>Gender</label>
-                            <select  name='jk' class="form-control select2bs4" required>
-                               <option value="">Pilih</option>
-                                <option value="L">Laki-Laki</option>
-                                <option value="P">Perempuan</option>
-                               </select>
-                              </div>
-                            </div>
-                  <div class="form-row">          
-                    <div class="form-group col-md-12">
-                      <label for="alamat">Alamat</label>
-                    <textarea class="form-control" id="alamat" name="alamat" required> </textarea>
-                    </div>
-                  </div>
-                  <button type="submit" name="add" value="cek" class="btn btn-success">Daftar</button>
-                   <a href="../pages/data_anggota.php" type="button" class="btn btn-warning">Kembali</a>
-                </form>
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+                   <center><br> <h1>Selamat Datang Di Sistem Informasi Perpustakaan </h1> 
+                        <small><b class="form-group" style="font-size: 18px; font-family: verdana;"> (
+                          <?php echo (new \DateTime())->format('d-F-Y');?> )
+                          Jam <b class="form-group" style="font-size: 18px; font-family: verdana;"
+                            id="jam"></b>
+                          </small><br><br>
+                           <a href="pages/data_anggota.php" class="btn btn-warning btn-sm">Ubah Data Anggota</a>  
+                   </center> 
+                </div>
               </div>
             </div>
           </div>
         </section>
+        <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID-Anggota</th>
+      <th scope="col">Nama</th>
+      <th scope="col">Profil</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Status</th>
+      <th scope="col">Alamat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <?php 
+      $no = 1;
+      $data=mysqli_query($koneksi,"SELECT * FROM tb_anggota ORDER BY id_anggota ASC");
+         while($i=mysqli_fetch_array($data)){?>
 
+                <td><?=$no++?></td>
+                <td><?=$i['id_anggota']?></td>
+                <td><?=ucfirst($i['nama'])?></td>
+                <td><img src="gambar/<?=$i['gambar']?>"width="70px" hight="70px"></td>
+                <td><?php  if($i['jk']=='L'){
+                                echo "Laki-Laki";
+                          }elseif ($i['jk']=='P') {
+                            echo "Perempuan";
+                          }
+                              ?>
+                </td>
+                <td><?=$i['status']?></td>
+                <td><?=$i['alamat']?></td>
+            </tr>
+            <?php }?>
+  </tbody>
+</table>
+
+
+</table>
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -117,6 +130,30 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#example').DataTable();
+} );
 
+  window.onload = function() { jam(); }
+
+    function jam() {
+    var e = document.getElementById('jam'),
+    d = new Date(), h, m, s;
+    h = d.getHours();
+    m = set(d.getMinutes());
+    s = set(d.getSeconds());
+
+    e.innerHTML = h +':'+ m +':'+ s;
+
+    setTimeout('jam()', 1000);
+    }
+
+    function set(e) {
+    e = e < 10 ? '0'+ e : e;
+    return e;
+  }
+
+</script>
 </body>
 </html>
